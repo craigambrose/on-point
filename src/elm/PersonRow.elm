@@ -17,8 +17,8 @@ type alias Model = {
 init : (Model, Cmd Msg)
 init =
     ({
-      mon = DayButton.init,
-      tue = DayButton.init
+      mon = DayButton.init "Mon",
+      tue = DayButton.init "Tue"
     }, Cmd.none)
 
 -- UPDATE

@@ -6,15 +6,22 @@ import Html.Events exposing (onClick)
 
 -- MODEL
 
-type Model = Default | Danger | Warning | Success
+type State = Default | Danger | Warning | Success
+type alias Model = {
+  name : String,
+  state : State
+}
 
 -- initialModel : Model
 -- initialModel =
 --     Default
 
-init : Model
-init =
-    Default
+init : String -> Model
+init name =
+  {
+    name = name,
+    state = Default
+  }
 
 -- UPDATE
 
@@ -25,8 +32,9 @@ update : Msg -> Model -> Model
 update action model =
     case action of
       Cycle ->
-        cycleType model
+        {model | state = cycleType model.state}
 
+cycleType : State -> State
 cycleType state =
   case state of
     Default -> Success
@@ -38,7 +46,7 @@ cycleType state =
 
 view : Model -> Html Msg
 view model =
-    button [ class ("btn " ++ stateClass model), onClick Cycle ] [ text "Day" ]
+    button [ class ("btn " ++ stateClass model.state), onClick Cycle ] [ text model.name ]
 
 stateClass state =
   case state of

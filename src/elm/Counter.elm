@@ -17,8 +17,8 @@ initialModel =
     0
 
 
-init : ( Model, Cmd Msg )
-init =
+init : String -> ( Model, Cmd Msg )
+init name =
     ( initialModel
     , Cmd.none
     )
