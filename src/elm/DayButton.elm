@@ -3,12 +3,13 @@ module DayButton exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
+import Date exposing (..)
 
 -- MODEL
 
 type State = Default | Danger | Warning | Success
 type alias Model = {
-  name : String,
+  date : Date,
   state : State
 }
 
@@ -16,10 +17,10 @@ type alias Model = {
 -- initialModel =
 --     Default
 
-init : String -> Model
-init name =
+init : Date -> Model
+init date =
   {
-    name = name,
+    date = date,
     state = Default
   }
 
@@ -46,7 +47,9 @@ cycleType state =
 
 view : Model -> Html Msg
 view model =
-    button [ class ("btn " ++ stateClass model.state), onClick Cycle ] [ text model.name ]
+  let name = toString (Date.dayOfWeek model.date)
+  in
+    button [ class ("btn " ++ stateClass model.state), onClick Cycle ] [ text name ]
 
 stateClass state =
   case state of

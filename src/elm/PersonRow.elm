@@ -4,6 +4,9 @@ import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
+import Date.Extra.Create exposing (dateFromFields)
+import Date.Extra.Period
+import Date exposing (..)
 
 import DayButton
 
@@ -16,10 +19,13 @@ type alias Model = {
 
 init : (Model, Cmd Msg)
 init =
-    ({
-      mon = DayButton.init "Mon",
-      tue = DayButton.init "Tue"
-    }, Cmd.none)
+    let
+      startDate = dateFromFields 2016 Jan 1 0 0 0 0
+    in
+      ({
+        mon = DayButton.init startDate,
+        tue = DayButton.init (Date.Extra.Period.add Date.Extra.Period.Day 1 startDate)
+      }, Cmd.none)
 
 -- UPDATE
 
