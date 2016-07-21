@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import PersonRow exposing (init, update, view)
+import Components.PersonRow exposing (init, update, view)
 import Html.App as Html
 
 

@@ -1,8 +1,10 @@
-module PersonRow exposing (..)
+module Components.PersonRow exposing (..)
+
 import Html exposing (..)
 import Html.App as App
-
-import WeekButtons
+import Date
+import Date.Extra.Create exposing (dateFromFields)
+import Components.WeekButtons as WeekButtons
 
 -- MODEL
 
@@ -12,7 +14,10 @@ type alias Model = {
 
 init : (Model, Cmd Msg)
 init =
-  {week = WeekButtons.init} ! []
+  let
+    startDate = dateFromFields 2016 Date.Jan 1 0 0 0 0
+  in
+    {week = WeekButtons.init startDate} ! []
 
 -- UPDATE
 

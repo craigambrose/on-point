@@ -1,14 +1,13 @@
-module WeekButtons exposing (..)
+module Components.WeekButtons exposing (..)
 
 import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
-import Date.Extra.Create exposing (dateFromFields)
 import Date.Extra.Period
 import Date exposing (..)
 
-import DayButton
+import Components.DayButton as DayButton
 
 -- MODEL
 
@@ -21,22 +20,19 @@ type alias IndexedDayButton = {
   model : DayButton.Model
 }
 
-init : Model
-init =
-    let
-      startDate = dateFromFields 2016 Jan 1 0 0 0 0
-    in
-      {
-        days = [
-          initIndexedDayButton startDate 0,
-          initIndexedDayButton startDate 1,
-          initIndexedDayButton startDate 2,
-          initIndexedDayButton startDate 3,
-          initIndexedDayButton startDate 4,
-          initIndexedDayButton startDate 5,
-          initIndexedDayButton startDate 6
-        ]
-      }
+init : Date -> Model
+init startDate =
+  {
+    days = [
+      initIndexedDayButton startDate 0,
+      initIndexedDayButton startDate 1,
+      initIndexedDayButton startDate 2,
+      initIndexedDayButton startDate 3,
+      initIndexedDayButton startDate 4,
+      initIndexedDayButton startDate 5,
+      initIndexedDayButton startDate 6
+    ]
+  }
 
 initIndexedDayButton startDate index =
   IndexedDayButton index (DayButton.init (Date.Extra.Period.add Date.Extra.Period.Day index startDate))

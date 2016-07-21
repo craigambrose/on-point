@@ -1,4 +1,4 @@
-module DayButton exposing (..)
+module Components.DayButton exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (style, class)
