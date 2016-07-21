@@ -1,15 +1,14 @@
 module Main exposing (..)
 
 import ElmTest exposing (..)
-import CounterTest exposing (all)
+import Helpers.WeekTest exposing (all)
 
 
 allTests : Test
 allTests =
     suite "All tests"
-        [ CounterTest.all
+        [ Helpers.WeekTest.all
         ]
-
 
 main : Program Never
 main =

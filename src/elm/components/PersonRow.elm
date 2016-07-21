@@ -1,4 +1,4 @@
-module Components.PersonRow exposing (..)
+module Components.PersonRow exposing (Model, Msg, init, update, view)
 
 import Html exposing (..)
 import Html.App as App

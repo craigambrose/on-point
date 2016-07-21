@@ -1,4 +1,4 @@
-module Components.WeekButtons exposing (..)
+module Components.WeekButtons exposing (Model, Msg, init, update, view)
 
 import Html exposing (..)
 import Html.App as App
